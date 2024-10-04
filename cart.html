@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Fashion Hub</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="cart">
+        <h2>Your Shopping Cart</h2>
+        <form action="https://api.whatsapp.com/send?phone=+201028308960" method="GET">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Size</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="product-name"></td>
+                        <td id="product-size"></td>
+                        <td id="product-price"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 id="total"></h3>
+            <h4>Customer Information</h4>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="address" placeholder="Your Address" required>
+            <label for="size">Preferred Size:</label>
+            <input type="text" id="size" name="size" placeholder="Enter size (S, M, L, etc.)" required>
+            <input type="text" name="phone" value="+201028308960" readonly>
+            <button type="submit">Submit Order</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2024 Fashion Hub. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get('product');
+        const productPrice = urlParams.get('price');
+        const productSize = urlParams.get('size');
+
+        document.getElementById('product-name').innerText = productName;
+        document.getElementById('product-size').innerText = productSize;
+        document.getElementById('product-price').innerText = '$' + productPrice;
+        document.getElementById('total').innerText = 'Total: $' + productPrice;
+    </script>
+</body>
+</html>
